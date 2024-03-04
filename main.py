@@ -182,7 +182,7 @@ def story_scenario(player):
     print("*vstupuješ do klubu*")
     print(f"*Bubo Kielik:* \n< Ahoj {player.name}, som rád, že si sa ukázal. Dnes budeš trénovať so mnou. Dám ti pár taktík a potom si môžeš zahrať s ostatnými. Myslím, že s Viki sa poznáš. Nebolo by však na škodu, keby sa zoznámiš aj s ostatnými. \n< Myslím, že môžme začať.")
     position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
-    choice = input("\n< Dnes sa pozrieme na pešiakové koncovky. Dokáže v tejto pozícii čierny na ťahu chytiť pešiaka? \n1. áno \n2. nie")
+    choice = input("\n< Dnes sa pozrieme na pešiakové koncovky. Dokáže v tejto pozícii čierny na ťahu chytiť pešiaka? \n1. áno \n2. nie \n> ")
     if choice == '1':
         print("> Myslím, že áno, mal by ho dobehnúť.")
         print("< Správne.")
@@ -190,7 +190,13 @@ def story_scenario(player):
         print("> Nie, ten pešiak je moc ďaleko.")
         print("< Nemáš pravdu. Pešiak je síce ďaleko, no čierny kráľ ho dokáže chytiť.")
     position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
-    choice = input("< ")
+    choice = input("< Skúsme to teraz mierne pozmeniť: pozícia ostáva rovnaká, no teraz je na ťahu biely. Má čierny šancu na remízu? \n1. áno \n2. nie \n> ")
+    if choice == '1':
+        print("> Samozrejme, šanca je vždy.")
+        print("< Bohužiaľ... v tejto pozícii už čierny nemá čo urobiť.")
+    elif choice == '2':
+        print("ano")
+        print("nie")
 
     #####intro_viktoria_bubonova#####
         
