@@ -154,10 +154,10 @@ def story_scenario(player):
                         random_number = random.randint(1, 100)
                         if random_number == 1:
                             print("\n*Ako zázrakom sa ti podarilo vyhrať* \n< Wow! Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Pravda, za túto prehru si môžem sám, ale aj tak si ma prekvapil. Niekedy v klube dáme odvetu.")
-                            print("\n*Získavaš 100 ELO, 50 bodov reputácie a ") #predmet
+                            print("\n*Získavaš 100 ELO, 50 bodov reputácie a meme od Buba.") 
                             player.elo += 100
                             player.reputation += 50
-                            # pridať predmet
+                            memeOdBuba.quantity += 1
                         else:
                             print("\n*Prehral si.* \n< Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Niekedy v klube dáme odvetu.")
                     elif choice == '2':
@@ -166,10 +166,10 @@ def story_scenario(player):
                         random_number = random.randint(1, 100)
                         if random_number == 1:
                             print("\n*Ako zázrakom sa ti podarilo vyhrať* \n< Wow! Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Pravda, za túto prehru si môžem sám, ale aj tak si ma prekvapil. Niekedy v klube dáme odvetu.")
-                            print("\n*Získavaš 100 ELO, 50 bodov reputácie a ") #predmet
+                            print("\n*Získavaš 100 ELO, 50 bodov reputácie a meme od Buba.")
                             player.elo += 100
                             player.reputation += 50
-                            # pridať predmet
+                            memeOdBuba.quantity += 1
                         else:
                             print("\n*Prehral si.* \n< Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Niekedy v klube dáme odvetu.")
                 elif choice == '2':
@@ -207,8 +207,10 @@ def story_scenario(player):
 # Main game loop
 player = Player(name="")
 pozvankaNaOnlineMSR = Inventory('Pozvánka na online MSR', 0, 0, 0, 0)
+memeOdBuba = Inventiry('Meme od Buba, 0, 0, 0, 0)
 items = {
     'pozvanka na online msr': pozvankaNaOnlineMSR,
+    'meme od buba': memeOdBuba,
 }
 MatejKrištál = NPC('Matej Krištál', 1400, 0, True)
 MarosBazalka = NPC('Maroš Bazalka', 1500, 0, False)
