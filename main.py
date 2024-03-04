@@ -179,7 +179,18 @@ def story_scenario(player):
         BuboKielik.display_npc_stats()
 
     #####vstup_do_klubu#####
-        
+    print("*vstupuješ do klubu*")
+    print(f"*Bubo Kielik:* \n< Ahoj {player.name}, som rád, že si sa ukázal. Dnes budeš trénovať so mnou. Dám ti pár taktík a potom si môžeš zahrať s ostatnými. Myslím, že s Viki sa poznáš. Nebolo by však na škodu, keby sa zoznámiš aj s ostatnými. \n< Myslím, že môžme začať.")
+    position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
+    choice = input("\n< Dnes sa pozrieme na pešiakové koncovky. Dokáže v tejto pozícii čierny na ťahu chytiť pešiaka? \n1. áno \n2. nie")
+    if choice == '1':
+        print("> Myslím, že áno, mal by ho dobehnúť.")
+        print("< Správne.")
+    elif choice == '2':
+        print("> Nie, ten pešiak je moc ďaleko.")
+        print("< Nemáš pravdu. Pešiak je síce ďaleko, no čierny kráľ ho dokáže chytiť.")
+    position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
+    choice = input("< ")
 
     #####intro_viktoria_bubonova#####
         
