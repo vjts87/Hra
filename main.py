@@ -186,6 +186,8 @@ def story_scenario(player):
     if choice == '1':
         print("> Myslím, že áno, mal by ho dobehnúť.")
         print("< Správne.")
+        print("*Získavaš 10 bodov reputácie*")
+        player.reputation += 10
     elif choice == '2':
         print("> Nie, ten pešiak je moc ďaleko.")
         print("< Nemáš pravdu. Pešiak je síce ďaleko, no čierny kráľ ho dokáže chytiť.")
@@ -195,8 +197,34 @@ def story_scenario(player):
         print("> Samozrejme, šanca je vždy.")
         print("< Bohužiaľ... v tejto pozícii už čierny nemá čo urobiť.")
     elif choice == '2':
-        print("ano")
-        print("nie")
+        print("> V tomto prípade už nie.")
+        print("< Správne. Zaujímavé, ako vie zmeniť výsledok partie takýto malý detail.")
+        print("*Získavaš 10 bodov reputácie*")
+        player.reputation += 10
+    position.showChessBoard('5k2/8/8/5PK1/8/8/8/8')
+    choice = input("< Skúsime niečo ťažšie... aj keď, nie o moc. Čo musí biely na ťahu urobiť, aby vyhral? /n1. Posunúť pešiaka, aby bol bližšie k polu premeny. /n2. Ísť kráľom do opozície. /n> ")
+    if choice == '1':
+        print("> Mal by posunúť pešiaka.")
+        print("< Nie, ak by ho posunul, partia skončí remízou.")
+    elif choice == '2':
+        print("> Mal by vstúpiť do opozície.")
+        print("< Správne.")
+        print("*Získavaš 10 bodov reputácie*")
+        player.reputation += 10
+    position.showChessBoard()
+    choice = input()
+    if choice == '1':
+        print()
+        print()
+    elif choice == '2':
+    position.showChessBoard()
+    choice = input()
+    if choice == '1':
+        print()
+        print()
+    elif choice == '2':
+        print()
+        print()
 
     #####intro_viktoria_bubonova#####
         
@@ -207,7 +235,7 @@ def story_scenario(player):
 # Main game loop
 player = Player(name="")
 pozvankaNaOnlineMSR = Inventory('Pozvánka na online MSR', 0, 0, 0, 0)
-memeOdBuba = Inventiry('Meme od Buba, 0, 0, 0, 0)
+memeOdBuba = Inventory('Meme od Buba, 0, 0, 0, 0)
 items = {
     'pozvanka na online msr': pozvankaNaOnlineMSR,
     'meme od buba': memeOdBuba,
