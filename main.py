@@ -1,8 +1,9 @@
 ##### Majster Levíc #####
 import dialogues
-
-from classes import Player, NPC, Inventory, Position
+from classes import Player, NPC, Inventory, Position, ImageManager
 from dialogueManager import dialogueManager
+
+
 
 ##### Príbeh #####
 
@@ -16,7 +17,7 @@ def story_scenario(player):
         choice = input("*Pre spustenie hry stlač 1.* \n> ")
 
     #####intro_Matej_Kristal#####
-    if True:
+    if False:
         if choice == "1":
             print("\n*1 nová správa od používateľa Matej Krištál*")
         else:
@@ -46,7 +47,7 @@ def story_scenario(player):
         player.display_stats()
 
     #####MTNK#####
-    if True:
+    if False:
         print("*1 nová správa od používateľa Matej Krištál*")
         choice = dMan.handleChoices(dialogues.OtvoritSpravu)
         if choice == "1":
@@ -71,7 +72,7 @@ def story_scenario(player):
         pozvankaNaOnlineMSR.display_inventory()
 
     #####intro_Maros_Bazalka#####
-    if True:
+    if False:
         print("\n*1 nová správa od používateľa Maroš Bazalka*")
         choice = dMan.handleChoices(dialogues.OtvoritSpravu)
         if choice == "1":
@@ -104,7 +105,7 @@ def story_scenario(player):
         MarosBazalka.display_npc_stats()
     
     #####online_MSR#####
-    if True: 
+    if False: 
         if pozvankaNaOnlineMSR.quantity == 1:
             print("\n*Blížia sa online MSR. Chceš sa zúčastniť?*")
             choice = dMan.handleChoices(dialogues.VstupDoTurnaja)
@@ -130,8 +131,8 @@ def story_scenario(player):
                 player.reputation -= 10
         player.display_stats()
 
-    #####intro_Bubo_Kielik#####(!)
-    if True:
+    #####intro_Bubo_Kielik#####
+    if False:
         print("*1 nová správa od používateľa Bubo Kielik*")
         choice = dMan.handleChoices(dialogues.OtvoritSpravu)
         if choice == '1':
@@ -140,7 +141,7 @@ def story_scenario(player):
             if choice == '1':
                 print("\n> Ahoj, \nďakujem za pozvanie, určite sa zastavím.")
                 print("\n< To rád počujem. Mal by si čas na 1 rýchlu partiu? Nech sa uistím, že sa mi o Tvojich výkonoch nesnívalo. ;)")
-                choice == dMan.handleChoices(dialogues.VyzvaNaPartiu)
+                choice = dMan.handleChoices(dialogues.VyzvaNaPartiu)
                 if choice == '1':
                     print("\n> Samozrejme, aj tak nemám nič lepšie na práci.")
                     print("\n< Ako povieš... vyber si stranu.")
@@ -158,6 +159,7 @@ def story_scenario(player):
                             player.elo += 100
                             player.reputation += 50
                             memeOdBuba.quantity += 1
+                            memeOdBuba.show_image()
                         else:
                             print("\n*Prehral si.* \n< Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Niekedy v klube dáme odvetu.")
                     elif choice == '2':
@@ -170,6 +172,7 @@ def story_scenario(player):
                             player.elo += 100
                             player.reputation += 50
                             memeOdBuba.quantity += 1
+                            memeOdBuba.show_image()
                         else:
                             print("\n*Prehral si.* \n< Takže sa mi naozaj nesnívalo, hráš veľmi dobre. Niekedy v klube dáme odvetu.")
                 elif choice == '2':
@@ -179,81 +182,117 @@ def story_scenario(player):
         BuboKielik.display_npc_stats()
 
     #####vstup_do_klubu#####
-    print("*vstupuješ do klubu*")
-    print(f"*Bubo Kielik:* \n< Ahoj {player.name}, som rád, že si sa ukázal. Dnes budeš trénovať so mnou. Dám ti pár taktík a potom si môžeš zahrať s ostatnými. Myslím, že s Viki sa poznáš. Nebolo by však na škodu, keby sa zoznámiš aj s ostatnými. \n< Myslím, že môžme začať.")
-    position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
-    choice = input("\n< Dnes sa pozrieme na pešiakové koncovky. Dokáže v tejto pozícii čierny na ťahu chytiť pešiaka? \n1. áno \n2. nie \n> ")
-    if choice == '1':
-        print("> Myslím, že áno, mal by ho dobehnúť.")
-        print("< Správne.")
-        print("*Získavaš 10 bodov reputácie*")
-        player.reputation += 10
-    elif choice == '2':
-        print("> Nie, ten pešiak je moc ďaleko.")
-        print("< Nemáš pravdu. Pešiak je síce ďaleko, no čierny kráľ ho dokáže chytiť.")
-    position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
-    choice = input("< Skúsme to teraz mierne pozmeniť: pozícia ostáva rovnaká, no teraz je na ťahu biely. Má čierny šancu na remízu? \n1. áno \n2. nie \n> ")
-    if choice == '1':
-        print("> Samozrejme, šanca je vždy.")
-        print("< Bohužiaľ... v tejto pozícii už čierny nemá čo urobiť.")
-    elif choice == '2':
-        print("> V tomto prípade už nie.")
-        print("< Správne. Zaujímavé, ako vie zmeniť výsledok partie takýto malý detail.")
-        print("*Získavaš 10 bodov reputácie*")
-        player.reputation += 10
-    position.showChessBoard('5k2/8/8/5PK1/8/8/8/8')
-    choice = input("< Skúsime niečo ťažšie... aj keď, nie o moc. Čo musí biely na ťahu urobiť, aby vyhral? /n1. Posunúť pešiaka, aby bol bližšie k polu premeny. /n2. Ísť kráľom do opozície. /n> ")
-    if choice == '1':
-        print("> Mal by posunúť pešiaka.")
-        print("< Nie, ak by ho posunul, partia skončí remízou.")
-    elif choice == '2':
-        print("> Mal by vstúpiť do opozície.")
-        print("< Správne.")
-        print("*Získavaš 10 bodov reputácie*")
-        player.reputation += 10
-    position.showChessBoard()
-    choice = input()
-    if choice == '1':
-        print()
-        print()
-    elif choice == '2':
-    position.showChessBoard()
-    choice = input()
-    if choice == '1':
-        print()
-        print()
-    elif choice == '2':
-        print()
-        print()
+    if False:
+        print("*vstupuješ do klubu*")
+        print(f"*Bubo Kielik:* \n< Ahoj {player.name}, som rád, že si sa ukázal. Dnes budeš trénovať so mnou. Dám ti pár taktík a potom si môžeš zahrať s ostatnými. Myslím, že s Viki sa poznáš. Nebolo by však na škodu, keby sa zoznámiš aj s ostatnými. \n< Myslím, že môžme začať.")
+        position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
+        choice = input("\n< Dnes sa pozrieme na pešiakové koncovky. Dokáže v tejto pozícii čierny na ťahu chytiť pešiaka? \n1. áno \n2. nie \n> ")
+        if choice == '1':
+            print("> Myslím, že áno, mal by ho dobehnúť.")
+            print("< Správne.")
+            print("*Získavaš 10 bodov reputácie*")
+            player.reputation += 10
+        elif choice == '2':
+            print("> Nie, ten pešiak je moc ďaleko.")
+            print("< Nemáš pravdu. Pešiak je síce ďaleko, no čierny kráľ ho dokáže chytiť.")
+            print("*Strácaš 10 bodov reputácie*")
+            player.reputation -= 10
+        position.showChessBoard('8/8/2k2P2/8/8/8/8/7K')
+        choice = input("< Skúsme to teraz mierne pozmeniť: pozícia ostáva rovnaká, no teraz je na ťahu biely. Má čierny šancu na remízu? \n1. áno \n2. nie \n> ")
+        if choice == '1':
+            print("> Samozrejme, šanca je vždy.")
+            print("< Bohužiaľ... v tejto pozícii už čierny nemá čo urobiť.")
+            print("*Strácaš 10 bodov reputácie*")
+            player.reputation -= 10
+        elif choice == '2':
+            print("> V tomto prípade už nie.")
+            print("< Správne. Zaujímavé, ako vie zmeniť výsledok partie takýto malý detail.")
+            print("*Získavaš 10 bodov reputácie*")
+            player.reputation += 10
+        position.showChessBoard('5k2/8/8/5PK1/8/8/8/8')
+        choice = input("< Skúsime niečo ťažšie... aj keď, nie o moc. Čo musí biely na ťahu urobiť, aby vyhral? /n1. Posunúť pešiaka, aby bol bližšie k polu premeny. /n2. Ísť kráľom do opozície. /n> ")
+        if choice == '1':
+            print("> Mal by posunúť pešiaka.")
+            print("< Nie, ak by ho posunul, partia skončí remízou.")
+            print("*Strácaš 10 bodov reputácie*")
+            player.reputation -= 10
+        elif choice == '2':
+            print("> Mal by vstúpiť do opozície.")
+            print("< Správne.")
+            print("*Získavaš 10 bodov reputácie*")
+            player.reputation += 10
+        position.showChessBoard('7k/8/7P/7K/8/8/8/8')
+        choice = input("< Tento diagram by mal byť pre teba jednoduchý. Ako dopadne partia? Nezáleží na tom, kto je na ťahu. \n1. Biely vyhrá. \n2. Bude remíza. \n> ")
+        if choice == '1':
+            print('> Biely má pešiaka naviac, musí to vyhrať.')
+            print('< Bohužiaľ nemáš pravdu. Pokiaľ čierny nieje retardovaný, tak neprehrá.')
+            print("*Strácaš 10 bodov reputácie*")
+            player.reputation -= 10
+        elif choice == '2':
+            print('> Čierny dokáže remízovať. Samozrejme za predpokladu, že nieje retardovaný.')
+            print('< Správne.')
+            print("*Získavaš 10 bodov reputácie*")
+            player.reputation += 10
+        position.showChessBoard('8/8/8/7p/6k1/5p2/5P1K/8')
+        move = input("< Najťažšie na koniec. Čo musí čierny zahrať, aby vyhral? \n> ")
+        if move.lower() in ['kh4']:
+            print("< Správne... to je na dnes všetko. Môžeš si ešte s niekým zahrať, ak chceš.")
+            print("*Získavaš 25 bodov reputácie*")
+            player.reputation += 25
+        else:
+            print("< Nie tak úplne... po tomto ťahu by bola remíza. Správne riešenie je Kh4.")
+            print("< Každopádne, myslím že pre dnes stačilo. Môžeš si ešte s niekým zahrať, ak chceš.")
+            print("*Strácaš 25 bodov reputácie*")
+            player.reputation -= 25
+        player.display_stats()
 
     #####intro_viktoria_bubonova#####
-        
+                
 
-    #####idk#####
-
+    #####furík_Adam#####
+    if True:
+        print("*Po ceste domov z tréningu si všimneš zvláštnu osobu sediacu na chodníku s hlavou v dlaniach.*")
+        choice = input("Čo urobíš? \n1. Spýtaš sa, či je v poriadku. \n2. Prejdeš okolo a neriešiš. \n> ")
+        if choice == '1':
+            print("< Oni ma donútili! Ja som nechcel! *fňuk*")
+            print("> Prepáč bratu, si v pohode?")
+            print("< Hovoria že tam vyzerám spokojne, ale ja som TRPEL!")
+            print("> Čo sa stalo?")
+            print("< Nechcem na to myslieť... Ber si to!")
+            print("*Hodí po tebe záhadnú fotografiu*")
+            choice = input("1. Pozrieť sa na fotku. \n> ")
+            if choice == '1':
+                zahadnaFotkaAdam.quantity += 1
+                zahadnaFotkaAdam.show_image()
+        elif choice == '2':
+            print("**")
 
 # Main game loop
+
 player = Player(name="")
-pozvankaNaOnlineMSR = Inventory('Pozvánka na online MSR', 0, 0, 0, 0)
-memeOdBuba = Inventory('Meme od Buba, 0, 0, 0, 0)
+pozvankaNaOnlineMSR = Inventory('Pozvánka na online MSR', '', 0, 0, 0, 0)
+memeOdBuba = Inventory('Meme od Buba', '', 0, 0, 0, 0, 'MemeOdBuba.jpg')
+zahadnaFotkaAdam = Inventory('Záhadná fotka', 'Fotka zobrazujúca incident pri garážach - leto 2023 \n(copiright Matej Krištál)', 0, 0, 0, 0, 'ZahadnaFotkaAdam.jpg')
 items = {
     'pozvanka na online msr': pozvankaNaOnlineMSR,
     'meme od buba': memeOdBuba,
+    'zahadna fotka': zahadnaFotkaAdam,
 }
 MatejKrištál = NPC('Matej Krištál', 1400, 0, True)
 MarosBazalka = NPC('Maroš Bazalka', 1500, 0, False)
 BuboKielik = NPC('Bubo Kielik', 2200, 0, False)
 RukoLyljak = NPC('Ruko Lyljak', 0, 0, True) 
 ViktoriaBubonova = NPC('Viktória Buboňová', 1500, 10, False)
+FurrikAdam = NPC('Furrík Adam', 0, 0, False, True)
 NPCS = {
     'matej kristal': MatejKrištál,
     'maros bazalka': MarosBazalka,
     'bubo kielik': BuboKielik,
     'ruko lyljak': RukoLyljak,
     'viktoria bubonova': ViktoriaBubonova,
+    'furrik adam': FurrikAdam
 }
 position = Position() 
 dMan = dialogueManager(player, NPCS, items)
 
 story_scenario(player)
-
