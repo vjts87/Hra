@@ -1,4 +1,5 @@
-
+import os
+from PIL import Image
 # player class -> class(display_stats(???))
 class Player:
     def __init__(self, name, elo=1400, love=50, friends=2, reputation=20, mentalhealth=75):
@@ -13,25 +14,36 @@ class Player:
         print(f"\nŠtatistiky:\nElo: {self.elo}\nLáska: {self.love}\nPriatelia: {self.friends}\nReputácia: {self.reputation}\nMentálne zdravie: {self.mentalhealth} \n")
 
 class NPC:
-    def __init__(self, name, elo, loveToPlayer, isFriend):
+    def __init__(self, name, elo, loveToPlayer, isFriend, isPet: bool = False):
         self.name = name
         self.elo = elo
         self.loveToPlayer = loveToPlayer
         self.isFriend = isFriend
+        self.isPet = isPet
 
     def display_npc_stats(self):
-        print(f"\nMeno: {self.name} \nElo: {self.elo} \nCity: {self.loveToPlayer} \nPriateľstvo: {self.isFriend} \n")
+        print(f"\nMeno: {self.name} \nElo: {self.elo} \nCity: {self.loveToPlayer} \nPriateľstvo: {self.isFriend} \nDomáce zviera: {self.isPet} \n")
 
 class Inventory:
-    def __init__(self, name, quantity, eloRise, loveRise, friendRise):
+    def __init__(self, name, descriprion, quantity, eloRise, loveRise, friendRise, pic: str = ''):
         self.name = name
+        self.description = descriprion
         self.quantity = quantity
         self.eloRise = eloRise
         self.loveRise = loveRise
         self.friendRise = friendRise
+        self.pic = pic
+
+    def show_image(self):
+        if self.pic.strip() == '':
+            print("Tento predmet nemá obrázok.")
+            return
+        workdir = os.path.dirname(__file__) + "//images"
+        image = Image.open(os.path.join(workdir, self.pic))
+        image.show()
     
     def display_inventory(self):
-        print(f"\nInfo o predmete: \nNázov: {self.name} \nPočet: {self.quantity} \nPrírastok ela: {self.eloRise} \nPrírastok lásky: {self.loveRise} \nPrírastok priateľstva: {self.friendRise} \n")
+        print(f"\nInfo o predmete: \nNázov: {self.name} \nPopisok: {self.description} \nPočet: {self.quantity} \nPrírastok ela: {self.eloRise} \nPrírastok lásky: {self.loveRise} \nPrírastok priateľstva: {self.friendRise} \n")
 
 class Position:
     def __init__(self) -> None:
@@ -86,3 +98,12 @@ class Position:
             print()
             self.drawFloor()
 
+
+class ImageManager():
+    def __init__(self, filename):
+        self.filename = filename
+        self.work_dir = os.path.dirname(__file__) + "//images"
+        self.image = Image.open(os.path.join(self.work_dir, self.filename))
+    
+    def show(self):
+        self.image.show()
